@@ -41,11 +41,19 @@ jobs:
       - run: 
           name: Run tests with coverage
           command: npm test --coverage
-      
-      - store_test_results:
-          path: test-results
+
+      - run:
+          name: Package application
+          command: sls package --package test-circle-ci-package
 
       - run:
           name: Deploy application
-          command: sls deploy
+          command: sls deploy --package test-circle-ci-package --stage pre
 
+      - run: 
+          name: Run tests with coverage
+          command: npm test --coverage
+
+      - run:
+          name: Deploy application
+          command: sls deploy --package test-circle-ci-package --stage prod
