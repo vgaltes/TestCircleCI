@@ -26,7 +26,11 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: npm install
+      - run:
+          name: Install Serverless CLI and dependencies
+          command: |
+            sudo npm i -g serverless
+            npm install
 
       - save_cache:
           paths:
@@ -34,6 +38,11 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: npm test
+      - run: 
+          name: Run tests with coverage
+          command: npm test --coverage
 
+      - run:
+          name: Deploy application
+          command: sls deploy
 
