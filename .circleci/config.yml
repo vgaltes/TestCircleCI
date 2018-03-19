@@ -44,11 +44,11 @@ jobs:
 
       - run:
           name: Package application
-          command: sls package --package test-circle-ci-package
+          command: sls package --package test-circleci-package
 
       - run:
           name: Deploy application
-          command: sls deploy --package test-circle-ci-package --stage pre
+          command: sls deploy --package test-circleci-package --stage pre
 
       - run: 
           name: Run tests with coverage
@@ -56,4 +56,4 @@ jobs:
 
       - run:
           name: Deploy application
-          command: sls deploy --package test-circle-ci-package --stage prod
+          command: sls deploy --package test-circleci-package --stage prod
