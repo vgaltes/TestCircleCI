@@ -41,6 +41,9 @@ jobs:
       - run: 
           name: Run tests with coverage
           command: npm test --coverage
+      
+      - store_test_results:
+          path: test-results
 
       - run:
           name: Deploy application
