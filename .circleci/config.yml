@@ -7,12 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:6.10
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
+      - image: circleci/node:8.10
 
     working_directory: ~/repo
 
@@ -31,7 +26,7 @@ jobs:
           command: |
             sudo npm i -g serverless
             npm install
-            sudo apt-get install awscli
+            # sudo apt-get install awscli
 
       - save_cache:
           paths:
@@ -44,20 +39,12 @@ jobs:
           command: npm test --coverage
 
       - run:
-          name: Package application
-          command: sls package --package test-circleci-package
-
-      - run:
           name: Deploy application
           command: sls deploy --stage pre
 
-      - run: 
-          name: Run tests with coverage
-          command: npm test --coverage
-
-      - run:
-          name: Deploy application
-          command: |
-            chmod +x scripts/aws-cli-assumerole.sh
-            source scripts/aws-cli-assumerole.sh
-            sls deploy --stage prod
+    #   - run:
+    #       name: Deploy application
+    #       command: |
+    #         chmod +x scripts/aws-cli-assumerole.sh
+    #         source scripts/aws-cli-assumerole.sh
+    #         sls deploy --stage prod
