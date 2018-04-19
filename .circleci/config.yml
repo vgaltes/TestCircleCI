@@ -56,11 +56,8 @@ jobs:
           command: npm test --coverage
 
       - run:
-          name: Assume role
+          name: Deploy application
           command: |
             chmod +x scripts/aws-cli-assumerole.sh
             source scripts/aws-cli-assumerole.sh
-
-      - run:
-          name: Deploy application
-          command: sls deploy --stage prod
+            sls deploy --stage prod
