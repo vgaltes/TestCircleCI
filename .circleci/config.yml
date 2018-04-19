@@ -31,7 +31,7 @@ jobs:
           command: |
             sudo npm i -g serverless
             npm install
-            apt-get install awscli
+            sudo apt-get install awscli
 
       - save_cache:
           paths:
