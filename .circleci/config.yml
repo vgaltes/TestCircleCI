@@ -48,12 +48,18 @@ jobs:
 
       - run:
           name: Deploy application
-          command: sls deploy --package test-circleci-package --stage pre
+          command: sls deploy --stage pre
 
       - run: 
           name: Run tests with coverage
           command: npm test --coverage
 
       - run:
+          name: Assume role
+          command: |
+            chmod +x scripts/aws-cli-assumerole.sh
+            source scripts/aws-cli-assumerole.sh
+
+      - run:
           name: Deploy application
-          command: sls deploy --package test-circleci-package --stage prod
+          command: sls deploy --stage prod
