@@ -26,7 +26,7 @@ jobs:
           command: |
             sudo npm i -g serverless
             npm install
-            # sudo apt-get install awscli
+            sudo apt-get install awscli
 
       - save_cache:
           paths:
@@ -42,9 +42,9 @@ jobs:
           name: Deploy application
           command: sls deploy --stage pre
 
-    #   - run:
-    #       name: Deploy application
-    #       command: |
-    #         chmod +x scripts/aws-cli-assumerole.sh
-    #         source scripts/aws-cli-assumerole.sh
-    #         sls deploy --stage prod
+      - run:
+          name: Deploy application
+          command: |
+            chmod +x scripts/aws-cli-assumerole.sh
+            source scripts/aws-cli-assumerole.sh
+            sls deploy --stage prod
