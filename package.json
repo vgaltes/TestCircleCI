@@ -5,6 +5,7 @@
   "main": "handler.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha **/*.spec.js",
+    "deploy": "./node_modules/.bin/serverless deploy",
     "deploy:pre": "./node_modules/.bin/serverless deploy --stage pre",
     "deploy:prod": "./node_modules/.bin/serverless deploy --stage prod"
   },
