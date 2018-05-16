@@ -28,6 +28,7 @@ jobs:
             sudo npm install -g npm
             npm ci
             sudo apt-get install awscli
+            export SLSUSER=circleci
 
       - save_cache:
           paths:
