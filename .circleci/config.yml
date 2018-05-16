@@ -25,7 +25,7 @@ jobs:
           name: Install Serverless CLI and dependencies
           command: |
             # update npm
-            npm install -g npm
+            sudo npm install -g npm
             npm ci
             sudo apt-get install awscli
 
