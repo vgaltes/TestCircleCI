@@ -1,0 +1,6 @@
+dev-user:
+  message: "Environment variable from dev-user"
+pre:
+  message: "Environment variable from pre"
+prod:
+  message: "Environment variable from prod"
